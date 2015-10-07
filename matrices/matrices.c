@@ -8,14 +8,13 @@ int main(){
 	for(i=0; i<3; i++){
 		for(j=0; j<3; j++){
 			printf("dame el dato de la fila %d de la columna %d\n",i+1,j+1);
-			scanf("%d",&arreglo1[i][j]);
-		}
+			scanf("%c",&arreglo1[i][j]);
 	}
 	printf("para la matriz 2 dame el sig dato ");
 	for(i=0; i<3; i++){
 		for(j=0; j<3; j++){
 			printf("dame el dato de la fila %d de la columna %d  \n ",i+1,j+1);
-			scanf("%d", &arreglo[i][j]);
+			scanf("%c", &arreglo2[i][j]);
 		}
 	}
 	printf("las matrices que se multiplicaran son: \n");
@@ -51,4 +50,3 @@ int main(){
 		printf("]\n");
 	}
 }
-
