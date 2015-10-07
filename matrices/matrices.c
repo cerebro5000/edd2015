@@ -23,7 +23,7 @@ int main(){
 	for(i=0; i<3; i++){
 		printf("[");
 		for(j=0; j<3; j++){
-			printf("%.2f,",arreglo1[j]i]);
+			printf("%.2f,",arreglo1[j][i]);
 		}
 		printf("]\n");
 	}
@@ -37,7 +37,6 @@ int main(){
 	}
 
 	//comienzan las operaciones
-	for()
 	for(j=0;j<3;j++){
 		acu = acu + arreglo1[j][i] * arreglo2[i][j];
 		mres[j][i] = acu;
