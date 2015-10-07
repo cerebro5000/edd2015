@@ -21,14 +21,14 @@ int main(){
 	for(i=0; i<3; i++){
 		printf("[");
 		for(j=0; j<3; j++){
-			printf("%d,"arreglo1[i][j]);
+			printf("%c,",arreglo1[i][j]);
 		}
 		printf("]\n");
 	}
 	for(i=0; i<3; i++){
 		printf("[");\
 		for(j=0; j<3; j++){
-			printf("%d,"arreglo2[i][j]);
+			printf("%c,",arreglo2[i][j]);
 		}
 		printf("]\n");
 	}
@@ -45,7 +45,7 @@ int main(){
 	for(i=0; i<3; i++){
 		printf("[");
 		for(j=0; j<=3; i++){
-			printf("%d",mres[i][j]);
+			printf("%c,",mres[i][j]);
 		}
 		printf("]\n");
 	}
