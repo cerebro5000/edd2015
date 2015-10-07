@@ -18,4 +18,5 @@ int main(){
 		printf("%d \n",p[i]);
 	}
 	free(p);
+	return 0;
 }
