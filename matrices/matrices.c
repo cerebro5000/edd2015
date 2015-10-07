@@ -2,7 +2,7 @@
 
 int main(){
 	float arrelglo1[3][3], arreglo2[3][3], mres[3][3], acu=0;
-	int i,j,k,h;
+	int i,j;
 	printf("programa que multiplica matrices de 3x3");
 	printf("para la matriz 1 dame los sig datos");
 	for(i=0; i<3; i++){
