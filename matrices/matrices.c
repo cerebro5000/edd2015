@@ -19,7 +19,7 @@ int main(){
 		}
 	}
 	printf("las matrices que se multiplicaran son: \n");
-	printf("matriz 1");
+	printf("matriz 1"\n);
 	for(i=0; i<3; i++){
 		printf("[");
 		for(j=0; j<3; j++){
@@ -27,7 +27,7 @@ int main(){
 		}
 		printf("]\n");
 	}
-	printf("matriz 2");
+	printf("matriz 2\n");
 	for(i=0; i<3; i++){
 		printf("[");
 		for(j=0; j<3; j++){
@@ -37,18 +37,19 @@ int main(){
 	}
 
 	//comienzan las operaciones
+	i=0;
 	for(j=0;j<3;j++){
 		acu = acu + arreglo1[j][i] * arreglo2[i][j];
 		mres[j][i] = acu;
 	}
 	acu =0;
-	i=2;
+	i=1;
 	for(j=0; j<3; j++){
 		acu = acu + arreglo1[j][i] * arreglo2[i][j];
 		mres[j][i] = acu;
 	}
 	acu=0;
-	i=3;
+	i=2;
 	for(j=0; j<3; j++){
 		acu = acu + arreglo1[j][i] * arreglo2[i][j];
 	}
