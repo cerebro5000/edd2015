@@ -19,7 +19,7 @@ int main(){
 		}
 	}
 	printf("las matrices que se multiplicaran son: \n");
-	printf("matriz 1"\n);
+	printf("matriz 1\n");
 	for(i=0; i<3; i++){
 		printf("[");
 		for(j=0; j<3; j++){
