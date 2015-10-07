@@ -7,13 +7,14 @@ int main(){
 	printf("para la matriz 1 dame los sig datos");
 	for(i=0; i<3; i++){
 		for(j=0; j<3; j++){
-			printf("dame el dato de la fila %f de la columna %f\n",i+1,j+1);
+			printf("dame el dato de la fila %d de la columna %d\n",i+1,j+1);
 			scanf("%f",&arreglo1[i][j]);
+		}
 	}
 	printf("para la matriz 2 dame el sig dato ");
 	for(i=0; i<3; i++){
 		for(j=0; j<3; j++){
-			printf("dame el dato de la fila %f de la columna %f  \n ",i+1,j+1);
+			printf("dame el dato de la fila %d de la columna %d  \n ",i+1,j+1);
 			scanf("%f", &arreglo2[i][j]);
 		}
 	}
