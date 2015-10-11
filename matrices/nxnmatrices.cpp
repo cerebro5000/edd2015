@@ -3,13 +3,14 @@
 #include <unistd.h>
 using namespace std;
 
-void multiplicacion(float *a, float *b, float **c);
-void mostrarDatos(float **c, int *a, int *b);
-void validarOmatriz(int a, int b);
-void pedirTamanos(int *a, int *b);
+void multiplicacion(float *, float *, float **);
+void mostrarDatos(float **, int *, int *);
+void validarOmatriz(int, int);
+void pedirTamanos(int*, int*);
+void ingresaDatos(float**, int*, int*);
 int main(){
 	int tamx1, tamy1, tamx2,tamy2;
-	float arreglo1[tamx1][tamy1], arreglo2[tamx2][tamy2], mres[3][3], acu=0;
+	float arreglo1[tamx1][tamy1], arreglo2[tamx2][tamy2], mres[tamx1][tamy2], acu=0;
 	cout<<"programa que multiplica matrices de nxn"<<endl;
 	cout<<"agrega el tamano de la mtriz 1"<<endl;
 	pedirTamanos(&tamx1,&tamy1);
@@ -18,12 +19,7 @@ int main(){
 	validarOmatriz(tamx1, tamy2);
 	cout<<"para la matriz 1 dame los sig datos"<<endl;
 	
-	for(int i=0; i<3; i++){
-		for(int j=0; j<3; j++){
-			cout<<"dame el dato de la fila "<<j+1<<" de la columna"<<i+1<<endl;
-			cin>>arreglo1[j][i];
-		}
-	}
+	
 	cout<<"para la matriz 2 dame el sig dato "<<endl;
 	for(int i=0; i<3; i++){
 		for(int j=0; j<3; j++){
@@ -60,6 +56,14 @@ int main(){
 	}
 	return 0;
 }
+void ingresaDatos(float **m,int *tamx, int *tamy){
+	for(int i = 0; i < *tamy; i++){
+		for(int j = 0; j <*tamx ; j++){
+			cout<<"dame el dato de la fila "<<j+1<<" de la columna"<<i+1<<endl;
+			cin>>m[j][i];
+		}
+	}
+}
 void pedirTamanos(int *a, int *b){
 	
 	cout<<"dame el tamano de las filas"<<endl;
@@ -85,7 +89,7 @@ void mostrarDatos(float **c, int *a, int *b){
 	for(int i = 0 ; i < *b ; i++){
 		cout<<"[";
 		for(int j = 0 ; j < *a ; j++){
-			cout<<*c[j][i]<<", ";
+			cout<<c[j][i]<<", ";
 		}
 		cout<<"]"<<endl;
 	}
