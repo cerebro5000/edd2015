@@ -10,7 +10,7 @@ float** crearM( int*, int*);
 void ingresaDatos(float**, int, int);
 void imprimeM(float**, int, int);
 void multiplicacion(float **, float**, float **, int, int);
-
+void liberarMem(float**);
 
 int main(){
 	int c1,f1,c2,f2;
@@ -52,16 +52,9 @@ int main(){
 	imprimeM(mres,f1,c2);
 
 	//liberamos la memoria
-	for(int i=0; i<f1; i++)
-		delete [] m1[i];
-	delete m1;
-	for(int i=0; i<f2; i++)
-		delete [] m2[i];
-	delete m2;
-	for(int i=0; i<f1; i++)
-		delete [] mres[i];
-	delete mres;
-
+	liberarMem(m1);
+	liberarMem(m2);
+	liberarMem(mres);
 	return 0;
 }
 void validarOperacion(int *x, int *y){
@@ -114,4 +107,9 @@ void multiplicacion(float **m1, float**m2, float **res, int y, int x){
 			acu=0;
 		}
 	}
+}
+void liberarMem(float **m){
+	for(int i=0; i<f1; i++)
+		delete [] m1[i];
+	delete m1;
 }
