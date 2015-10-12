@@ -5,7 +5,7 @@ using namespace std;
 
 void validarOperacion(int *, int *);
 void ingresarTamano(int *, int *);
-void crearM(float**, int*, int*);
+float** crearM( int*, int*);
 void ingresaDatos(float**, int, int);
 void imprimeM(float**, int, int);
 int main(){
@@ -23,9 +23,9 @@ int main(){
 	validarOperacion(&tx1,&ty2);
 
 	//creamos las matrices
-	crearM(m1, &tx1, &ty1);
-	crearM(m2, &tx2, &ty2);
-	crearM(mres, &tx1, &ty2);
+	m1 = crearM(&tx1, &ty1);
+	m2 = crearM(&tx2, &ty2);
+	mres = crearM(&ty1, &tx2);
 
 	//se igresa datos a las matrices
 	cout<<"ingresa los datos de las matrices:"<<endl;
@@ -35,13 +35,15 @@ int main(){
 	ingresaDatos(m2,tx2,ty2);
 
 	//se imprimen las matrices
+	cout<<"matriz 1"<<endl;
 	imprimeM(m1, tx1, ty1);
+	cout<<"matriz 2"<<endl;
 	imprimeM(m2, tx2, ty2);
 
 	//se ejecutan las operaciones
-	for(int k=0; k<3; k++){
-		for(int i=0; i<3; i++){
-			for(int j=0; j<3; j++){
+	for(int k=0; k<tx1; k++){
+		for(int i=0; i<ty2; i++){
+			for(int j=0; j<ty2; j++){
 				acu = acu + m1[j][k] * m2[i][j];
 			}
 			mres[i][k]=acu;
@@ -49,17 +51,17 @@ int main(){
 		}
 	}
 	//se muestra el resultado
-	cout<<"el resultado es"<<endl;
-	imprimeM(mres,txy,ty2);
+	cout<<"el resultado es:"<<endl;
+	imprimeM(mres,tx1,ty2);
 
 	//liberamos la memoria
 	for(int i=0; i<tx1; i++)
-		delete [] m1[i]; 
+		delete [] m1[i];
 	delete m1;
 	for(int i=0; i<tx2; i++)
 		delete [] m2[i];
 	delete m2;
-	for(int i=0; i<tx1)
+	for(int i=0; i<tx1; i++)
 		delete [] mres[i];
 	delete mres;
 
@@ -80,11 +82,12 @@ void ingresarTamano(int *x, int *y){
 	cout<<"ingrersa el numero de columnas"<<endl;
 	cin>>*y;
 }
-void crearM(float **m,int *x,int *y){
-	m = new float*[*x];
-	for(int i = 0; i < *y; i++){
-		m[i]= new float[*y];
+float** crearM(int *x,int *y){
+	float **m = new float*[*y];
+	for(int i = 0; i < *x; i++){
+		m[i]= new float[*x];
 	}
+	return m;
 }
 void ingresaDatos(float**matriz, int x, int y){
 	for(int j =0 ; j < y ; j++){
