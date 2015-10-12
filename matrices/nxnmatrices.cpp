@@ -4,7 +4,7 @@
 using namespace std;
 
 void validarOperacion(int *x, int *y);
-void ingresarTamano(int *x, int *y)
+void ingresarTamano(int *x, int *y);
 int main(){
 	int tx1,ty1,tx2,ty2;
 	float m1[3][3], m2[3][3], mres[3][3], acu=0;
