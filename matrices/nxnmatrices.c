@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <unistd.h>
-#include <stdlib.c>
+#include <stdlib.h>
 
 //prototipos de funcion
 void validarOperacion(int *x, int *y){
 	if(*x == *y)
 		printf("todo esta bien las operaciones se peuden realizar]n");
 	else{
-		print("operacion invalida cerrando programa\n");
+		printf("operacion invalida cerrando programa\n");
 		usleep(9000);
 		exit(0);
 	}
@@ -19,17 +19,19 @@ void ingresarTamano(int *x, int *y){
 	scanf("%d",y);
 }
 float** crearM(int *y,int *x){
-	float **m = (int**) malloc(float*[y]*sizeof(float*));
+	float **m = (float**) malloc((*y) *sizeof(int*));
 	for(int i = 0; i < *y; i++){
-		m[i]= (int *) malloc(float[*x]*sizeof(float));
+		m[i]= (float *) malloc((*x) *sizeof(int));
 	}
 	return m;
 }
 void ingresaDatos(float**matriz, int y, int x){
+	float dato;
 	for(int j =0 ; j < y ; j++){
 		for(int i =0 ; i < x ; i++){
-			print("dame el dato para la columna %d fila %d \n",i+1,j+1);
-			scanf("%f", matriz[j][i]);
+			printf("dame el dato para la columna %d fila %d \n",i+1,j+1);
+			scanf("%f",&dato);
+			matriz[j][i]=dato;
 		}
 	}
 }
