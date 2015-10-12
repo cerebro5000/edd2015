@@ -10,7 +10,7 @@ float** crearM( int*, int*);
 void ingresaDatos(float**, int, int);
 void imprimeM(float**, int, int);
 void multiplicacion(float **, float**, float **, int, int);
-void liberarMem(float**);
+void liberarMem(float**, int);
 
 int main(){
 	int c1,f1,c2,f2;
@@ -52,9 +52,9 @@ int main(){
 	imprimeM(mres,f1,c2);
 
 	//liberamos la memoria
-	liberarMem(m1);
-	liberarMem(m2);
-	liberarMem(mres);
+	liberarMem(m1, f1);
+	liberarMem(m2, f2);
+	liberarMem(mres, f1);
 	return 0;
 }
 void validarOperacion(int *x, int *y){
@@ -80,9 +80,9 @@ float** crearM(int *y,int *x){
 	return m;
 }
 void ingresaDatos(float**matriz, int y, int x){
-	for(int j =0 ; j < y ; j++){
-		for(int i =0 ; i < x ; i++){
-			cout<<"dame el dato para la columna "<<i+1<<"fila "<<j+1<<endl;
+	for(int j =0 ; j < x ; j++){
+		for(int i =0 ; i < y ; i++){
+			cout<<"dame el dato para la columna "<<j+1<<"fila "<<i+1<<endl;
 			cin>>matriz[i][j];
 		}
 	}
@@ -91,25 +91,25 @@ void imprimeM(float **matriz, int y, int x){
 	for(int i=0; i<y; i++){
 		cout<<"[";
 		for(int j=0; j<x; j++){
-			cout<<matriz[j][i]<<", ";
+			cout<<matriz[i][j]<<", ";
 		}
 		cout<<"]"<<endl;
 	}
 }
 void multiplicacion(float **m1, float**m2, float **res, int y, int x){
 	float acu = 0;
-	for(int k=0; k<y; k++){
-		for(int i=0; i<x; i++){
-			for(int j=0; j<x; j++){
-				acu = acu + m1[j][i] * m2[k][j];
+	for(int k=0; k < y; k++){
+		for(int i=0; i < x; i++){
+			for(int j=0; j < x; j++){
+				acu = acu + m1[i][j] * m2[j][k];
 			}
-			res[k][i]=acu;
+			res[i][k]=acu;
 			acu=0;
 		}
 	}
 }
-void liberarMem(float **m){
-	for(int i=0; i<f1; i++)
-		delete [] m1[i];
-	delete m1;
+void liberarMem(float **m, int tam){
+	for(int i=0; i<tam; i++)
+		delete [] m[i];
+	delete m;
 }
