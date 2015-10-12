@@ -3,22 +3,29 @@
 #include <cstdlib>
 using namespace std;
 
-void validarOperacion(int *x, int *y);
-void ingresarTamano(int *x, int *y);
+void validarOperacion(int *, int *);
+void ingresarTamano(int *, int *);
+void crearM(float**,int*,int*);
 int main(){
 	int tx1,ty1,tx2,ty2;
-	float m1[3][3], m2[3][3], mres[3][3], acu=0;
-
+	float **m1,**m2,**mres;
+	float arreglo1[3][3], arreglo2[3][3], acu=0;
 	cout<<"programa que multiplica matrices de nxn"<<endl;
 	//seingresan los tamanos de las matrices
 	cout<<"para la matriz 1 dame los sig datos"<<endl;
-	ingresarTamano(tx1,ty1);
+	ingresarTamano(&tx1,&ty1);
 	cout<<"para la matriz 2 dame el sig dato "<<endl;
-	ingresarTamano(tx2,ty2);
+	ingresarTamano(&tx2,&ty2);
 
 	//validamos si la operacion se peude realizar
 	validarOperacion(&tx1,&ty2);
 
+	//creamos las matrices
+	crearM(m1,&tx1,&ty1);
+	crearM(m2,&tx2,&ty2);
+	crearM(mres,&tx1&ty2);
+
+	//se imprimen las matrices
 	cout<<"las matrices que se multiplicaran son:"<<endl;
 	cout<<"matriz 1"<<endl;
 	for(int i=0; i<3; i++){
@@ -71,4 +78,10 @@ void ingresarTamano(int *x, int *y){
 	cin>>*x;
 	cout<<"ingrersa el numero de columnas"<<endl;
 	cin>>*y;
+}
+void crearM(float **m,int *x,int *y){
+	m = new iny*[*y];
+	for(int i = 0; i < *x; i++){
+		m[i]= new *[*x];
+	}
 }
