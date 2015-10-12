@@ -1,99 +1,45 @@
-#include <iostream>
+#include <stdio.h>
 #include <unistd.h>
-#include <cstdlib>
-using namespace std;
+#include <stdlib.c>
 
 //prototipos de funcion
-void validarOperacion(int *, int *);
-void ingresarTamano(int *, int *);
-float** crearM( int*, int*);
-void ingresaDatos(float**, int, int);
-void imprimeM(float**, int, int);
-void multiplicacion(float **, float**, float **, int, int);
-void liberarMem(float**, int);
-
-int main(){
-	int c1,f1,c2,f2;
-	float **m1,**m2,**mres;
-
-	cout<<"programa que multiplica matrices de nxn"<<endl;
-	//se ingresan los tamanos de las matrices
-	cout<<"dame el tamano de la matriz 1"<<endl;
-	ingresarTamano(&c1,&f1);
-	cout<<"dame el tamano de la matriz 2 "<<endl;
-	ingresarTamano(&c2,&f2);
-
-	//validamos si la operacion se peude realizar
-	validarOperacion(&c1,&f2);
-
-	//creamos las matrices
-	m1 = crearM(&f1, &c1);
-	m2 = crearM(&f2, &c2);
-
-	mres = crearM(&f1, &c2);
-
-	//se igresa datos a las matrices
-	cout<<"ingresa los datos de las matrices:"<<endl;
-	cout<<"matriz 1"<<endl;
-	ingresaDatos(m1,f1,c1);
-	cout<<"matriz 2"<<endl;
-	ingresaDatos(m2,f2,c2);
-
-	//se imprimen las matrices
-	cout<<"matriz 1"<<endl;
-	imprimeM(m1, f1, c1);
-	cout<<"matriz 2"<<endl;
-	imprimeM(m2, f2, c2);
-
-	//se ejecutan las operaciones
-	multiplicacion(m1, m2, mres, f1, c2);
-	//se muestra el resultado
-	cout<<"el resultado es:"<<endl;
-	imprimeM(mres,f1,c2);
-
-	//liberamos la memoria
-	liberarMem(m1, f1);
-	liberarMem(m2, f2);
-	liberarMem(mres, f1);
-	return 0;
-}
 void validarOperacion(int *x, int *y){
 	if(*x == *y)
-		cout<<"todo esta bien las operaciones se peuden realizar"<<endl;
+		printf("todo esta bien las operaciones se peuden realizar]n");
 	else{
-		cout<<"operacion invalida cerrando programa"<<endl;
+		print("operacion invalida cerrando programa\n");
 		usleep(9000);
 		exit(0);
 	}
 }
 void ingresarTamano(int *x, int *y){
-	cout<<"ingresa el numero de columnas"<<endl;
-	cin>>*x;
-	cout<<"ingrersa el numero de filas"<<endl;
-	cin>>*y;
+	printf("ingresa el numero de columnas\n");
+	scanf("%d",x);
+	printf("ingrersa el numero de filas\n");
+	scanf("%d",y);
 }
 float** crearM(int *y,int *x){
-	float **m = new float*[*y];
+	float **m = (int**) malloc(float*[y]*sizeof(float*));
 	for(int i = 0; i < *y; i++){
-		m[i]= new float[*x];
+		m[i]= (int *) malloc(float[*x]*sizeof(float));
 	}
 	return m;
 }
 void ingresaDatos(float**matriz, int y, int x){
 	for(int j =0 ; j < y ; j++){
 		for(int i =0 ; i < x ; i++){
-			cout<<"dame el dato para la columna "<<i+1<<"fila "<<j+1<<endl;
-			cin>>matriz[j][i];
+			print("dame el dato para la columna %d fila %d \n",i+1,j+1);
+			scanf("%f", matriz[j][i]);
 		}
 	}
 }
 void imprimeM(float **matriz, int y, int x){
 	for(int i=0; i<y; i++){
-		cout<<"[";
+		printf("[");
 		for(int j=0; j<x; j++){
-			cout<<matriz[i][j]<<", ";
+			printf("%f, ",matriz[i][j]);
 		}
-		cout<<"]"<<endl;
+		printf("] \n");
 	}
 }
 void multiplicacion(float **m1, float**m2, float **res, int y, int x){
@@ -123,6 +69,51 @@ void multiplicacion(float **m1, float**m2, float **res, int y, int x){
 }
 void liberarMem(float **m, int tam){
 	for(int i=0; i<tam; i++)
-		delete [] m[i];
-	delete m;
+		free(m[i]);
+	free(m);
+}
+int main(){
+	int c1,f1,c2,f2;
+	float **m1,**m2,**mres;
+
+	printf("programa que multiplica matrices de nxn \n");
+	//se ingresan los tamanos de las matrices
+	printf("dame el tamano de la matriz 1\n");
+	ingresarTamano(&c1,&f1);
+	printf("dame el tamano de la matriz 2 \n");
+	ingresarTamano(&c2,&f2);
+
+	//validamos si la operacion se peude realizar
+	validarOperacion(&c1,&f2);
+
+	//creamos las matrices
+	m1 = crearM(&f1, &c1);
+	m2 = crearM(&f2, &c2);
+
+	mres = crearM(&f1, &c2);
+
+	//se igresa datos a las matrices
+	printf("ingresa los datos de las matrices:\n");
+	printf("matriz 1\n");
+	ingresaDatos(m1,f1,c1);
+	printf("matriz 2\n");
+	ingresaDatos(m2,f2,c2);
+
+	//se imprimen las matrices
+	printf("matriz 1\n");
+	imprimeM(m1, f1, c1);
+	printf("matriz 2\n");
+	imprimeM(m2, f2, c2);
+
+	//se ejecutan las operaciones
+	multiplicacion(m1, m2, mres, f1, c2);
+	//se muestra el resultado
+	printf("el resultado es:\n");
+	imprimeM(mres,f1,c2);
+
+	//liberamos la memoria
+	liberarMem(m1, f1);
+	liberarMem(m2, f2);
+	liberarMem(mres, f1);
+	return 0;
 }
