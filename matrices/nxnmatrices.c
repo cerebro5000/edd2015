@@ -5,7 +5,7 @@
 //prototipos de funcion
 void validarOperacion(int *x, int *y){
 	if(*x == *y)
-		printf("todo esta bien las operaciones se peuden realizar]n");
+		printf("todo esta bien las operaciones se peuden realizar\n");
 	else{
 		printf("operacion invalida cerrando programa\n");
 		usleep(9000);
