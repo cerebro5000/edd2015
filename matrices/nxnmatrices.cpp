@@ -46,7 +46,7 @@ int main(){
 	imprimeM(m2, f2, c2);
 
 	//se ejecutan las operaciones
-	multiplicacion(m1, m2, mres, c2, f1);
+	multiplicacion(m1, m2, mres, f1, c2);
 	//se muestra el resultado
 	cout<<"el resultado es:"<<endl;
 	imprimeM(mres,f1,c2);
@@ -73,9 +73,9 @@ void ingresarTamano(int *x, int *y){
 	cin>>*y;
 }
 float** crearM(int *y,int *x){
-	float **m = new float*[*x];
+	float **m = new float*[*y];
 	for(int i = 0; i < *y; i++){
-		m[i]= new float[*y];
+		m[i]= new float[*x];
 	}
 	return m;
 }
@@ -98,13 +98,26 @@ void imprimeM(float **matriz, int y, int x){
 }
 void multiplicacion(float **m1, float**m2, float **res, int y, int x){
 	float acu = 0;
-	for(int k=0; k < y; k++){
-		for(int i=0; i < x; i++){
-			for(int j=0; j < x; j++){
-				acu = acu + m1[i][j] * m2[j][k];
+	if(y<=x){
+		for(int k=0; k < y; k++){
+			for(int i=0; i < x; i++){
+				for(int j=0; j < x; j++){
+					acu = acu + m1[i][j] * m2[j][k];
+				}
+				res[i][k]=acu;
+				acu=0;
 			}
-			res[i][k]=acu;
-			acu=0;
+		}
+	}
+	else{
+		for(int k=0; k < y; k++){
+			for(int i=0; i < x; i++){
+				for(int j=0; j < x; j++){
+					acu = acu + m1[k][j] * m2[i][j];
+				}
+				res[k][i]=acu;
+				acu=0;
+			}
 		}
 	}
 }
