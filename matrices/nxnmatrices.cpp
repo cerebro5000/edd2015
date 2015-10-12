@@ -80,10 +80,10 @@ float** crearM(int *y,int *x){
 	return m;
 }
 void ingresaDatos(float**matriz, int y, int x){
-	for(int j =0 ; j < x ; j++){
-		for(int i =0 ; i < y ; i++){
-			cout<<"dame el dato para la columna "<<j+1<<"fila "<<i+1<<endl;
-			cin>>matriz[i][j];
+	for(int j =0 ; j < y ; j++){
+		for(int i =0 ; i < x ; i++){
+			cout<<"dame el dato para la columna "<<i+1<<"fila "<<j+1<<endl;
+			cin>>matriz[j][i];
 		}
 	}
 }
