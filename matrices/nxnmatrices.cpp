@@ -11,7 +11,7 @@ void imprimeM(float**, int, int);
 int main(){
 	int tx1,ty1,tx2,ty2;
 	float **m1,**m2,**mres;
-	float arreglo1[3][3], arreglo2[3][3], acu=0;
+	float acu=0;
 	cout<<"programa que multiplica matrices de nxn"<<endl;
 	//seingresan los tamanos de las matrices
 	cout<<"dame los tamanos de la matriz 1"<<endl;
@@ -35,13 +35,14 @@ int main(){
 	ingresaDatos(m2,tx2,ty2);
 
 	//se imprimen las matrices
-
+	imprimeM(m1, tx1, ty1);
+	imprimeM(m2, tx2, ty2);
 
 	//se ejecutan las operaciones
 	for(int k=0; k<3; k++){
 		for(int i=0; i<3; i++){
 			for(int j=0; j<3; j++){
-				acu = acu + arreglo1[j][k] * arreglo2[i][j];
+				acu = acu + m1[j][k] * m2[i][j];
 			}
 			mres[i][k]=acu;
 			acu =0;
@@ -49,17 +50,23 @@ int main(){
 	}
 	//se muestra el resultado
 	cout<<"el resultado es"<<endl;
-	for(int i=0; i<3; i++){
-		cout<<"[";
-		for(int j=0 ; j<3; j++){
-			cout<<mres[j][i]<<",";
-		}
-		cout<<"]"<<endl;
-	}
+	imprimeM(mres,txy,ty2);
+
+	//liberamos la memoria
+	for(int i=0; i<tx1; i++)
+		delete [] m1[i]; 
+	delete m1;
+	for(int i=0; i<tx2; i++)
+		delete [] m2[i];
+	delete m2;
+	for(int i=0; i<tx1)
+		delete [] mres[i];
+	delete mres;
+
 	return 0;
 }
 void validarOperacion(int *x, int *y){
-	if(x==y)
+	if(*x == *y)
 		cout<<"todo esta bien las operaciones se peuden realizar"<<endl;
 	else{
 		cout<<"operacion invalida cerrando programa"<<endl;
@@ -79,15 +86,15 @@ void crearM(float **m,int *x,int *y){
 		m[i]= new float[*y];
 	}
 }
-void ingresaDatos(float**matriz,int x, int y){
+void ingresaDatos(float**matriz, int x, int y){
 	for(int j =0 ; j < y ; j++){
 		for(int i =0 ; i < x ; i++){
-			cout<<"dame el dato para la columna "<<x<<"fila "<<y<<endl;
+			cout<<"dame el dato para la columna "<<i<<"fila "<<j<<endl;
 			cin>>matriz[i][j];
 		}
 	}
 }
-void imprimeM(float **matriz,int x,int y){
+void imprimeM(float **matriz, int x, int y){
 	for(int i=0; i<y; i++){
 		cout<<"[";
 		for(int j=0; j<x; j++){
