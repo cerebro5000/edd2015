@@ -22,9 +22,9 @@ int main(){
 	validarOperacion(&tx1,&ty2);
 
 	//creamos las matrices
-	crearM(m1,&tx1,&ty1);
-	crearM(m2,&tx2,&ty2);
-	crearM(mres,&tx1&ty2);
+	crearM(m1, &tx1, &ty1);
+	crearM(m2, &tx2, &ty2);
+	crearM(mres, &tx1, &ty2);
 
 	//se igresa datos a las matrices
 	cout<<"ingresa los datos de las matrices:"<<endl;
@@ -73,9 +73,9 @@ void ingresarTamano(int *x, int *y){
 	cin>>*y;
 }
 void crearM(float **m,int *x,int *y){
-	m = new iny*[*y];
-	for(int i = 0; i < *x; i++){
-		m[i]= new *[*x];
+	m = new float*[*x];
+	for(int i = 0; i < *y; i++){
+		m[i]= new float[*y];
 	}
 }
 void ingresaDatos(float**matriz,int x, int y){
