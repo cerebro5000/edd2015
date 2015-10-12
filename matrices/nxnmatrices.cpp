@@ -3,15 +3,19 @@
 #include <cstdlib>
 using namespace std;
 
+//prototipos de funcion
 void validarOperacion(int *, int *);
 void ingresarTamano(int *, int *);
 float** crearM( int*, int*);
 void ingresaDatos(float**, int, int);
 void imprimeM(float**, int, int);
+void multiplicacion(float **, float**, float **, int, int);
+
+
 int main(){
 	int tx1,ty1,tx2,ty2;
 	float **m1,**m2,**mres;
-	float acu=0;
+
 	cout<<"programa que multiplica matrices de nxn"<<endl;
 	//seingresan los tamanos de las matrices
 	cout<<"dame los tamanos de la matriz 1"<<endl;
@@ -20,7 +24,7 @@ int main(){
 	ingresarTamano(&tx2,&ty2);
 
 	//validamos si la operacion se peude realizar
-	validarOperacion(&tx1,&ty2);
+	validarOperacion(&ty1,&tx2);
 
 	//creamos las matrices
 	m1 = crearM(&tx1, &ty1);
@@ -41,15 +45,7 @@ int main(){
 	imprimeM(m2, tx2, ty2);
 
 	//se ejecutan las operaciones
-	for(int k=0; k<tx1; k++){
-		for(int i=0; i<ty2; i++){
-			for(int j=0; j<ty2; j++){
-				acu = acu + m1[j][k] * m2[i][j];
-			}
-			mres[i][k]=acu;
-			acu =0;
-		}
-	}
+	multiplicacion(m1, m2, mres, tx1, ty1);
 	//se muestra el resultado
 	cout<<"el resultado es:"<<endl;
 	imprimeM(mres,tx1,ty2);
@@ -72,7 +68,7 @@ void validarOperacion(int *x, int *y){
 		cout<<"todo esta bien las operaciones se peuden realizar"<<endl;
 	else{
 		cout<<"operacion invalida cerrando programa"<<endl;
-		usleep(4000);
+		usleep(9000);
 		exit(0);
 	}
 }
@@ -92,7 +88,7 @@ float** crearM(int *x,int *y){
 void ingresaDatos(float**matriz, int x, int y){
 	for(int j =0 ; j < y ; j++){
 		for(int i =0 ; i < x ; i++){
-			cout<<"dame el dato para la columna "<<i<<"fila "<<j<<endl;
+			cout<<"dame el dato para la columna "<<i+1<<"fila "<<j+1<<endl;
 			cin>>matriz[i][j];
 		}
 	}
@@ -104,5 +100,17 @@ void imprimeM(float **matriz, int x, int y){
 			cout<<matriz[j][i]<<", ";
 		}
 		cout<<"]"<<endl;
+	}
+}
+void multiplicacion(float **m1, float**m2, float **res, int x, int y){
+	float acu =0;
+	for(int k=0; k<y; k++){
+		for(int i=0; i<x; i++){
+			for(int j=0; j<x; j++){
+				acu = acu + m1[j][k] * m2[i][j];
+			}
+			res[i][k]=acu;
+			acu =0;
+		}
 	}
 }
