@@ -3,24 +3,22 @@
 #include <cstdlib>
 using namespace std;
 
+void validarOperacion(int *x, int *y);
+void ingresarTamano(int *x, int *y)
 int main(){
-	float arreglo1[3][3], arreglo2[3][3], mres[3][3], acu=0;
+	int tx1,ty1,tx2,ty2;
+	float m1[3][3], m2[3][3], mres[3][3], acu=0;
 
-	cout<<"programa que multiplica matrices de 3x3"<<endl;
+	cout<<"programa que multiplica matrices de nxn"<<endl;
+	//seingresan los tamanos de las matrices
 	cout<<"para la matriz 1 dame los sig datos"<<endl;
-	for(int i=0; i<3; i++){
-		for(int j=0; j<3; j++){
-			cout<<"dame el dato de la fila "<<j+1<<" de la columna"<<i+1<<endl;
-			cin>>arreglo1[j][i];
-		}
-	}
+	ingresarTamano(tx1,ty1);
 	cout<<"para la matriz 2 dame el sig dato "<<endl;
-	for(int i=0; i<3; i++){
-		for(int j=0; j<3; j++){
-			cout<<"dame el dato de la fila "<<j+1<<" de la columna"<<i+1<<endl;
-			cin>>arreglo2[j][i];
-		}
-	}
+	ingresarTamano(tx2,ty2);
+
+	//validamos si la operacion se peude realizar
+	validarOperacion(&tx1,&ty2);
+
 	cout<<"las matrices que se multiplicaran son:"<<endl;
 	cout<<"matriz 1"<<endl;
 	for(int i=0; i<3; i++){
@@ -58,4 +56,19 @@ int main(){
 		cout<<"]"<<endl;
 	}
 	return 0;
+}
+void validarOperacion(int *x, int *y){
+	if(x==y)
+		cout<<"todo esta bien las operaciones se peuden realizar"<<endl;
+	else{
+		cout<<"operacion invalida cerrando programa"<<endl;
+		usleep(4000);
+		exit(0);
+	}
+}
+void ingresarTamano(int *x, int *y){
+	cout<<"ingresa el numero de filas"<<endl;
+	cin>>*x;
+	cout<<"ingrersa el numero de columnas"<<endl;
+	cin>>*y;
 }
