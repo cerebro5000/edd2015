@@ -7,6 +7,7 @@ void validarOperacion(int *, int *);
 void ingresarTamano(int *, int *);
 void crearM(float**, int*, int*);
 void ingresaDatos(float**, int, int);
+void imprimeM(float**, int, int);
 int main(){
 	int tx1,ty1,tx2,ty2;
 	float **m1,**m2,**mres;
@@ -84,5 +85,14 @@ void ingresaDatos(float**matriz,int x, int y){
 			cout<<"dame el dato para la columna "<<x<<"fila "<<y<<endl;
 			cin>>matriz[i][j];
 		}
+	}
+}
+void imprimeM(float **matriz,int x,int y){
+	for(int i=0; i<y; i++){
+		cout<<"[";
+		for(int j=0; j<x; j++){
+			cout<<matriz[j][i]<<", ";
+		}
+		cout<<"]"<<endl;
 	}
 }
