@@ -69,3 +69,19 @@ void borrar_lista(struct nodo *cabecera){
 		cabecera->sig = NULL;
 	}
 }
+
+void borrar_elemento(struct nodo *cabecera, int valor){
+	struct nodo *actual;
+	struct nodo *borrar;
+	borrar = (struct nodo*) malloc(sizeof(struct nodo));
+	actual = cabecera;
+	borrar->val = valor;
+	while(actual->sig != NULL){
+		actual = actual->sig;
+		if(borrar->val == valor){
+			borrar = actual->sig;
+			actual->sig = borrar->sig;
+			free(borrar);
+		}
+	}
+}
