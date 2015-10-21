@@ -3,7 +3,7 @@
 #include "nodo.h"
 #include "operaciones.h"
 
-void main(){
+int main(){
 	struct nodo *cabecera;
 	int valor,despues;
 	cabecera = (struct nodo*) malloc(sizeof(struct nodo));
@@ -16,10 +16,13 @@ void main(){
 			break;
 		insertar_al_principio(cabecera,valor);
 	}
-	imprime_lista(cabecera);
+	imprimir_lista(cabecera);
 	printf("despues de que numero quieres agregar algo");
 	scanf("%d",&despues);
 	printf("dime que dato quieres agregar despues de %d",despues);
 	scanf("%d",&valor);
 	insertar_despues_de(cabecera,valor,despues);
+	borrar_lista(cabecera;
+	return 0;)
+	
 }
