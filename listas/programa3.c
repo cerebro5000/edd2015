@@ -22,7 +22,7 @@ int main(){
 	printf("dime que dato quieres agregar despues de %d",despues);
 	scanf("%d",&valor);
 	insertar_despues_de(cabecera,valor,despues);
-	borrar_lista(cabecera;
-	return 0;)
+	borrar_lista(cabecera);
+	return 0;
 	
 }
