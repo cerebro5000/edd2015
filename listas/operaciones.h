@@ -15,4 +15,6 @@ void borrar_lista(struct nodo *cabecera);
 
 void inicializar(struct nodo *cabecera);
 
+void borrar_elemento(struct nodo *cabecera, int valor);
+
 #endif
