@@ -9,12 +9,12 @@ void inicializar(struct nodo *cabecera){
 void insertar_al_principio(struct nodo *cabecera, int valor_nuevo){
 	struct nodo *nuevo;
 	nuevo = (struct nodo*) malloc(sizeof(struct nodo) * 1);
+	nuevo->val = valor_nuevo;
 
-	nuevo-> val = valor_nuevo;
 	nuevo->sig = cabecera->sig;
 	nuevo->ant = cabecera;
 	cabecera->sig->ant = nuevo;
-	cbecera->sig = nuevo;
+	cabecera->sig = nuevo;
 }
 void insertar_al_final(struct nodo *cabecera, int valor_nuevo){
 	struct nodo *nuevo;
@@ -24,10 +24,10 @@ void insertar_al_final(struct nodo *cabecera, int valor_nuevo){
 	nuevo = (struct nodo*) malloc(sizeof(struct nodo) *1);
 	nuevo->val = valor_nuevo;
 
-	actual=actual->ant;
 
 	nuevo->sig = actual->sig;
 	nuevo->ant = actual;
+	nuevo->sig->ant = nuevo;
 	actual->sig= nuevo;
 }
 void insertar_despues_de(struct nodo *cabecera, int valor_nuevo, int valor_antes){
