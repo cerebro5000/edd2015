@@ -8,6 +8,7 @@ int main(){
 	int dato;
 	cabecera = (struct nodo*) malloc(sizeof(struct nodo));
 	inicializar(cabecera);
+	printf("presiona -1 si no queires mas datos\n");
 	while(1){
 		printf("dame un numero: ");
 		scanf("%d",&dato);
