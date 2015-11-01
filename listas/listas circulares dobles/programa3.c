@@ -7,14 +7,14 @@ int main(){
 	struct nodo *cabecera;
 	int valor,despues;
 	cabecera = (struct nodo*) malloc(sizeof(struct nodo));
-
+	inicializar(cabecera);	
 	printf("agrega datos y con -1 para ya no agregar mas\n");
 	while(1){
 		printf("dame un numero: ");
 		scanf("%d",&valor);
 		if(valor == -1)
 			break;
-		insertar_al_principio(cabecera,valor);
+		insertar_al_final(cabecera,valor);
 	}
 	imprimir_lista(cabecera);
 	printf("despues de que numero quieres agregar algo");
