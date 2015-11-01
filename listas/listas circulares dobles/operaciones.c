@@ -23,7 +23,7 @@ void insertar_al_final(struct nodo *cabecera, int valor_nuevo){
 	actual = cabecera;
 	nuevo = (struct nodo*) malloc(sizeof(struct nodo) *1);
 	nuevo->val = valor_nuevo;
-
+	actual = actual->ant;
 
 	nuevo->sig = actual->sig;
 	nuevo->ant = actual;
