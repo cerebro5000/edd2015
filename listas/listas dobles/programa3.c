@@ -14,7 +14,7 @@ int main(){
 		scanf("%d",&valor);
 		if(valor == -1)
 			break;
-		insertar_al_principio(cabecera,valor);
+		insertar_al_final(cabecera,valor);
 	}
 	imprimir_lista(cabecera);
 	printf("despues de que numero quieres agregar algo");
