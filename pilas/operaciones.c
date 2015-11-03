@@ -6,7 +6,7 @@
 void inicializar(struct nodo *cabecera){
 	cabecera->sig = NULL;
 }
-void insertar_al_principio(struct nodo *cabecera, int valor_nuevo){
+void push(struct nodo *cabecera, int valor_nuevo){
 	struct nodo *nuevo;
 	nuevo = (struct nodo*) malloc(sizeof(struct nodo) * 1);
 	nuevo-> val = valor_nuevo;
