@@ -17,4 +17,6 @@ void inicializar(struct nodo *cabecera);
 
 void borrar_elemento(struct nodo *cabecera, int valor);
 
+void pop(struct nodo *cabecera);
+
 #endif

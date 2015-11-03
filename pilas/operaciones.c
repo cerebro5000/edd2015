@@ -84,3 +84,14 @@ void borrar_elemento(struct nodo *cabecera, int valor){
 		actual = actual->sig;
 	}
 }
+void pop(struct nodo *cabecera){
+	struct nodo *borrado;
+	borrado = cabecera->sig;
+	if(cabecera->sig != NULL){
+		cabecera->sig = cabecera->sig->sig;
+		free(borrado);
+	}
+	else{
+		printf("pila vacia");
+	}
+}
