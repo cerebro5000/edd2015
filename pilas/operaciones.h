@@ -19,4 +19,6 @@ void borrar_elemento(struct nodo *cabecera, int valor);
 
 void pop(struct nodo *cabecera);
 
+void tope(struct nodo *cabecera);
+
 #endif

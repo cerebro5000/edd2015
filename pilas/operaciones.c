@@ -95,3 +95,9 @@ void pop(struct nodo *cabecera){
 		printf("pila vacia");
 	}
 }
+void tope(struct nodo *cabecera){
+	if(cabecera->sig != NULL)
+		printf("contenido del ultimo valor %d \n",cabecera->val);
+	else
+		printf("pila vacia no hay valor");
+}
