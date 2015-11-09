@@ -70,17 +70,13 @@ void borrar_lista(struct nodo *cabecera){
 	}
 }
 
-void borrar_elemento(struct nodo *cabecera, int valor){
-	struct nodo *actual;
+void borrar_al_principio(struct nodo *cabecera){
 	struct nodo *borrar;
-	borrar = cabecera;
-	actual = cabecera;
-	while(actual->sig != NULL){
-		borrar = borrar->sig;
-		if(borrar->val == valor){
-			actual->sig = borrar->sig;
-			free(borrar);
-		}
-		actual = actual->sig;
+	borrar = cabecera->sig;
+	if(cabecera->sig != NULL){
+		cabecera->sig = cabecera->sig->sig;
+		free(borrar);
 	}
+	else
+		printf("cola vacia");
 }
