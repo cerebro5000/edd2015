@@ -2,39 +2,40 @@
 #include "operaciones.h"
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct nodo cola;
+typedef struct nodo * cola;
 
 int menu();
-void operaciones(cola cabecera, int dato, int op);
+void operaciones(cola cabecera, int op);
 int main(){
-	struct nodo * cabecera;
-	int dato,op;
+	cola cabecera;
+	int op;
 	cabecera = (struct nodo *) malloc (sizeof(struct nodo));
 	inicializar(cabecera);
 	printf("programa que realiza una cola con listas dinamicas\n");
 	do{
 		op = menu();
-		operaciones(cabecera,dato,op);
+		operaciones(cabecera,op);
 		
 	}while(op != 4);
 	borrar_lista(cabecera);
 	return 0;
 }
 int menu(){
-	printf("selecciona que accion queres realizar \n
-		1.- inserta dato\n
-		2.- elimina un dato\n
-		3.- imprimir cola\n
-		4.- salir");
-		scanf("%d",&op);
+	int op;
+	printf("selecciona que accion queres realizar \n1.- inserta dato\n2.- elimina un dato\n3.- imprimir cola\n4.- salir\n");
+	scanf("%d",&op);
+	return op;
 }
-void operaciones(cola cabecera, int dato, int op){
+void operaciones(cola cabecera, int op){
+	int dato;
 	switch(op){
 		case 1:
-			intertar_al_final(cabecera);
+			printf("dame un dato para insertar: ");
+			scanf("%d",&dato);
+			insertar_al_final(cabecera,dato);
 			break;
 		case 2:
-			eliminar_al_principio();
+			borrar_al_principio(cabecera);
 			break;
 		case 3:
 			imprimir_lista(cabecera);
