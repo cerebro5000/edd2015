@@ -5,10 +5,7 @@
 
 void menu(){
 	printf("dime que opcion queres realizar de la pila \n");
-	printf("1.- insertar(push)\n
-		2.- borrar(pop)\n
-		3.- mostrar(tope)\n
-		4.- salir");
+	printf("1.- insertar(push)\n2.- borrar(pop)\n3.- mostrar(tope)\n4.- salir");
 }
 int main(){
 	struct nodo *cabecera;
@@ -33,10 +30,8 @@ int main(){
 			case 4:
 				break;
 			default:
-				printf("con ese boton no sales del programa\n
-					a!! a!! a!! no presionaste la tecla magica\n
-					a!! a!! a!!");
-				break
+printf("con ese boton no sales del programa\na!! a!! a!! no presionaste la tecla magica\na!! a!! a!!");
+				break;
 		}
 	}while(op != 4);
 	borrar_lista(cabecera);
