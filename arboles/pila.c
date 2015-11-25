@@ -23,9 +23,6 @@ void pop(struct nodo *cabecera){
 		cabecera->sig = cabecera->sig->sig;
 		free(borrado);
 	}
-	else{
-		printf("pila vacia");
-	}
 }
 char tope(struct nodo *cabecera){
 	if(cabecera->sig != NULL)
