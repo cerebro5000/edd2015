@@ -17,45 +17,37 @@ void insertar_en_lista(struct nodo * cola, char *val, int tam){
 }
 
 void post_fijo(struct nodo * pila, struct nodo * cola, struct nodo *post){
-	int prio=0,i;
+	int prio=0;
 	struct nodo *actual;
 	actual = cola;
 	while(actual->sig != NULL){
 		actual= actual->sig;
-		if(actual->val == '+' || actual->val == '-'){
-			if(prio == 1 && (tope(pila) == '+'|| tope(pila) == '-')){
-				insertar_al_final(post,tope(pila));
-				pop(pila);
-				push(pila,actual->val);
-			}
-			else
-				push(pila,actual->val);
-			if(prio == 2 && (tope(pila) == '*' || tope(pila) == '/')){
-				insertar_al_final(post,tope(pila));
-				pop(pila);
-				insertar_al_final(post,tope(pila));
-				pop(pila);
-			}
-			prio = 1;
-		}
 		if(actual->val == '*' || actual->val == '/'){
-			if(prio == 2 && (tope(pila) == '*' || tope(pila) == '/')){
+			if(tope(pila) == '*' || tope(pila) == '/'){
 				insertar_al_final(post,tope(pila));
 				pop(pila);
-				push(pila,actual->val);
+				prio--;
 			}
-			else
-				push(pila,actual->val);
-			prio = 2;
+			push(pila,actual->val);
+			prio++;
+		}
+		if(actual->val == '+' || actual->val == '-'){
+			while(prio > 0){
+				insertar_al_final(post,tope(pila));
+				pop(pila);
+				prio--;
+			}
+			push(pila,actual->val);
+			prio ++;
 		}
 		if(actual->val != '+' && actual->val != '-' && actual->val != '*' && actual->val != '/'){
 			insertar_al_final(post,actual->val);
 		}
 	}
-	printf("%d\n\n",prio);
-	for(i = 0 ; i < prio; i++){
+	while(prio > 0){
 		insertar_al_final(post,tope(pila));
 		pop(pila);
+		prio--;
 	}
 }
 int main(){
