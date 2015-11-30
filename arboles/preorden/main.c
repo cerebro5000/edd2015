@@ -41,8 +41,6 @@ void prefijo(struct nodo *lista, struct nodo *ope, struct nodo *pre){
 		if(actual->val != '+' && actual->val != '-' && actual->val != '*' && actual->val != '/')
 			insertar_al_final(pre,actual->val);
 	}
-	
-	
 }
 int main(){
 	struct nodo *ope, *cola, *pre;
