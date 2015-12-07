@@ -15,32 +15,28 @@ void agregar(struct nodo * lista){
 		insertar_al_final(lista,num);
 	}
 }
-void intercambio(struct nodo * lista ,struct nodo *inicio, struct nodo *aux){
-	struct nodo *actual;
-	actual = lista;
-	while(actual->sig != inicio){
-		actual = actual->sig;
-	}
-	actual->sig = aux;
-	aux->sig = inicio;
+void intercambio(struct nodo *inicio, struct nodo *aux){
 	borrar_elemento(inicio,aux->val);
+	aux->sig = inicio->sig;
+	inicio->sig = aux;
 }
 
 void seleccion(struct nodo *lista){
 	struct nodo *menor,*actual,*sig;
 	actual = lista;
 	menor = inicializar();
+	sig = actual->sig;
 	while(actual->sig != NULL){
-		actual = actual->sig;
-		sig = actual;
+		menor->val = actual->sig->val;
 		while(sig->sig != NULL){
-			sig = sig->sig;
-			if(sig->val < actual->val){
+			if(sig->val < menor->val){
 				menor->val = sig->val;
 			}
+			sig = sig->sig;
 			
 		}
-		intercambio(lista,actual,menor);
+		intercambio(actual,menor);
+		actual = actual->sig;
 	}
 }
 int main(){
