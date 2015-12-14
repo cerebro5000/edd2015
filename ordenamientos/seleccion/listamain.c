@@ -15,28 +15,40 @@ void agregar(struct nodo * lista){
 		insertar_al_final(lista,num);
 	}
 }
-void intercambio(struct nodo *inicio, struct nodo *aux){
-	borrar_elemento(inicio,aux->val);
-	aux->sig = inicio->sig;
-	inicio->sig = aux;
+void intercambio(struct nodo *lista,struct nodo **inicio, struct nodo **val){
+	struct nodo *aco,*aux;
+	aco = *inicio;
+	aux = lista;
+	while(aux->sig->val != (*inicio)->val){
+		aux = aux->sig;
+	}
+	while(aco->sig->val != val->val){
+		aco = aco->sig;
+	}
+	if(aco->val != val->val){
+		aco->sig = val->sig;
+		val->sig = aux->sig;
+		aux->sig = val;
+	}
+	(*inicio) = val;
 }
-
 void seleccion(struct nodo *lista){
-	struct nodo *menor,*actual,*sig;
+	struct nodo *actual,*sig, *menor;
 	actual = lista;
-	menor = inicializar();
-	sig = actual->sig;
 	while(actual->sig != NULL){
-		menor->val = actual->sig->val;
-		while(sig->sig != NULL){
-			if(sig->val < menor->val){
-				menor->val = sig->val;
-			}
-			sig = sig->sig;
-			
-		}
-		intercambio(actual,menor);
 		actual = actual->sig;
+		if(actual->sig != NULL)
+			sig = actual->sig;
+		else
+			sig = actual;
+		menor = sig;
+		while(sig->sig != NULL){
+			printf("%d < %d", sig->val , actual->val);
+			if(sig->val < actual->val)
+				menor = sig;
+			sig = sig->sig;
+		}
+		intercambio(lista,&actual,&menor);
 	}
 }
 int main(){
@@ -46,5 +58,6 @@ int main(){
 	imprimir_lista(lista);
 	seleccion(lista);
 	imprimir_lista(lista);
+	free(lista);
 	return 0;
 }
