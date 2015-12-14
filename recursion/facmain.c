@@ -12,4 +12,6 @@ int main(){
         printf("dame un numero \n");
         scanf("%d",&numero);
         res = factorial(numero);
+	printf("el resultado es %d\n",res);
+	return 0;
 }
